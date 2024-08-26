@@ -1,0 +1,26 @@
+{
+    "version": "4.4.0",
+    "flags": {},
+    "shapes": [
+        {
+            "label": "Lesion",
+            "points": [
+                [
+                    1261,
+                    861
+                ],
+                [
+                    1338,
+                    899
+                ]
+            ],
+            "group_id": null,
+            "shape_type": "rectangle",
+            "flags": {}
+        }
+    ],
+    "imagePath": "frame000057.jpeg",
+    "imageData": null,
+    "imageHeight": 900,
+    "imageWidth": 1600
+}
