@@ -148,7 +148,7 @@ def load_data_with_tools():
 
     ### Image directory
     data_dir = st.text_input("Enter image directory:",
-                             "C:\\data_annotator")
+                             r"C:\data_annotator\streamlit-annotator\data")
     
     ### Search image
     search_image = st.text_input("Search image:")
