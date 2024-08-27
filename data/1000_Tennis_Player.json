@@ -3,15 +3,15 @@
     "flags": {},
     "shapes": [
         {
-            "label": "Lesion",
+            "label": "tennis",
             "points": [
                 [
-                    1261,
-                    861
+                    195,
+                    323
                 ],
                 [
-                    1338,
-                    899
+                    223,
+                    354
                 ]
             ],
             "group_id": null,
@@ -19,8 +19,8 @@
             "flags": {}
         }
     ],
-    "imagePath": "frame000057.jpeg",
+    "imagePath": "1000_Tennis_Player.jpg",
     "imageData": null,
-    "imageHeight": 900,
-    "imageWidth": 1600
+    "imageHeight": 533,
+    "imageWidth": 800
 }

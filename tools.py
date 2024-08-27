@@ -28,6 +28,7 @@ def init_state():
 
     if "curr_image_info" not in st.session_state:
         st.session_state["curr_image_info"] = {}
+        st.session_state["curr_image_info"]["data_dir"] = None
         st.session_state["curr_image_info"]["image_name"] = None
         st.session_state["curr_image_info"]["image"] = None
         st.session_state["curr_image_info"]["image_width"] = None
@@ -148,20 +149,23 @@ def load_data_with_tools():
 
     ### Image directory
     data_dir = st.text_input("Enter image directory:",
-                             r"C:\data_annotator\streamlit-annotator\data")
-    
-    ### Search image
-    search_image = st.text_input("Search image:")
+                             "/media/admin1/ea78b76e-5f68-4af3-a29b-36a4428c73a0/streamlit-annotator/data")
     
     ### Extract image
     image_list = list(filter(lambda x: x.endswith(image_types),
-                             os.listdir(data_dir)))
-    
+                             sorted(os.listdir(data_dir))))
+
     ### Display slider for switching image
     if len(image_list) > 1:
         curr_image_index = st.slider("Select image", 0, len(image_list)-1)
-    else:
+    elif len(image_list) == 1:
         curr_image_index = st.slider("Select image", 0, disabled=True)
+    else:
+        st.error(f"No image found in {data_dir}")
+        st.stop()
+
+    ### Search image
+    search_image = st.text_input("Search image:")
 
     ### Read image
     if search_image:
@@ -184,6 +188,7 @@ def load_data_with_tools():
     json_file_name, json_data = _load_json_data(data_dir, image_name)
 
     ### Update session_state
+    st.session_state["curr_image_info"]["data_dir"] = data_dir
     st.session_state["curr_image_info"]["image_name"] = image_name
     st.session_state["curr_image_info"]["image"] = image
     st.session_state["curr_image_info"]["image_width"] = width
@@ -289,9 +294,14 @@ def sidebar_features():
     ### Object Class
     class_list = st.sidebar.data_editor(st.session_state["color_df"],
                                         disabled=["Color"],
-                                        use_container_width=True,
+                                        width=300,
+                                        hide_index=True,
                                         key="class_df")
     
+    if st.sidebar.button("Refresh"):
+        st.cache_data.clear()
+        st.rerun()
+
     st.session_state["drawing_mode"] = drawing_mode
     st.session_state["stroke_width"] = stroke_width
     st.session_state["retain"] = retain
@@ -302,6 +312,11 @@ def _add_class_name(json_data):
 
         ### Extract color and class name for each bounding box
         color = coords_info["stroke"]
+
+        if color == None:
+            st.error("Class is not defined")
+            st.stop()
+
         label = st.session_state["displayed_color_df"].loc[st.session_state["displayed_color_df"]["Color"]==color, "Class"].values[0]
 
         ### Add new key: "Class"
@@ -361,10 +376,13 @@ def canvas_drawing():
     else:
         color = None
 
+    data_dir = st.session_state["curr_image_info"]["data_dir"]
     image_name = st.session_state["curr_image_info"]["image_name"]
     width = st.session_state["curr_image_info"]["image_width"]
     height = st.session_state["curr_image_info"]["image_height"]
     json_file_name = st.session_state["curr_image_info"]["json_file_name"]
+
+    export_json_path = os.path.join(data_dir, json_file_name)
 
     canvas_result = st_canvas(
         fill_color="rgba(0, 0, 0, 0.3)",  # Fixed fill color with some opacity
@@ -388,12 +406,15 @@ def canvas_drawing():
         display_df = display_df[["type", "version", "left", "top", "width", "height", "fill", "stroke", "strokeWidth", "Class"]]
         st.dataframe(display_df)
 
+
         st.session_state["canvas_result"] = canvas_result.json_data
 
+
         if st.button("Export canvas.json"):
-            _export_json_file(json_file_name, canvas_result.json_data)
-            st.success(f'{json_file_name} exported!', icon="✅")
+            _export_json_file(export_json_path, canvas_result.json_data)
+            st.success(f'{export_json_path} exported!', icon="✅")
+
 
         if st.button("Export labelme.json"):
-            _export_labelme_json_file(image_name, json_file_name, canvas_result.json_data, width, height)
-            st.success(f'{json_file_name} exported!', icon="✅")
+            _export_labelme_json_file(image_name, export_json_path, canvas_result.json_data, width, height)
+            st.success(f'{export_json_path} exported!', icon="✅")

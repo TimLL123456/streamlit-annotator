@@ -1,58 +1,113 @@
 {
     "version": "4.4.0",
-    "flags": {},
-    "shapes": [
+    "objects": [
         {
-            "label": "ball",
-            "points": [
-                [
-                    247,
-                    7
-                ],
-                [
-                    295,
-                    54
-                ]
-            ],
-            "group_id": null,
-            "shape_type": "rectangle",
-            "flags": {}
+            "type": "rect",
+            "version": "4.4.0",
+            "originX": "left",
+            "originY": "top",
+            "left": 247,
+            "top": 7,
+            "width": 48,
+            "height": 47,
+            "fill": "rgba(0, 0, 0, 0.3)",
+            "stroke": "Red",
+            "strokeWidth": 2,
+            "strokeDashArray": null,
+            "strokeLineCap": "butt",
+            "strokeDashOffset": 0,
+            "strokeLineJoin": "miter",
+            "strokeUniform": true,
+            "strokeMiterLimit": 4,
+            "scaleX": 1,
+            "scaleY": 1,
+            "angle": 0,
+            "flipX": false,
+            "flipY": false,
+            "opacity": 1,
+            "shadow": null,
+            "visible": true,
+            "backgroundColor": "",
+            "fillRule": "nonzero",
+            "paintFirst": "fill",
+            "globalCompositeOperation": "source-over",
+            "skewX": 0,
+            "skewY": 0,
+            "rx": 0,
+            "ry": 0,
+            "Class": "ball"
         },
         {
-            "label": "head",
-            "points": [
-                [
-                    400,
-                    96
-                ],
-                [
-                    448,
-                    149
-                ]
-            ],
-            "group_id": null,
-            "shape_type": "rectangle",
-            "flags": {}
+            "type": "rect",
+            "version": "4.4.0",
+            "originX": "left",
+            "originY": "top",
+            "left": 400,
+            "top": 96,
+            "width": 48,
+            "height": 53,
+            "fill": "rgba(0, 0, 0, 0.3)",
+            "stroke": "Green",
+            "strokeWidth": 2,
+            "strokeDashArray": null,
+            "strokeLineCap": "butt",
+            "strokeDashOffset": 0,
+            "strokeLineJoin": "miter",
+            "strokeUniform": true,
+            "strokeMiterLimit": 4,
+            "scaleX": 1,
+            "scaleY": 1,
+            "angle": 0,
+            "flipX": false,
+            "flipY": false,
+            "opacity": 1,
+            "shadow": null,
+            "visible": true,
+            "backgroundColor": "",
+            "fillRule": "nonzero",
+            "paintFirst": "fill",
+            "globalCompositeOperation": "source-over",
+            "skewX": 0,
+            "skewY": 0,
+            "rx": 0,
+            "ry": 0,
+            "Class": "head"
         },
         {
-            "label": "head",
-            "points": [
-                [
-                    192,
-                    69
-                ],
-                [
-                    251,
-                    121
-                ]
-            ],
-            "group_id": null,
-            "shape_type": "rectangle",
-            "flags": {}
+            "type": "rect",
+            "version": "4.4.0",
+            "originX": "left",
+            "originY": "top",
+            "left": 192,
+            "top": 69,
+            "width": 59,
+            "height": 52,
+            "fill": "rgba(0, 0, 0, 0.3)",
+            "stroke": "Green",
+            "strokeWidth": 2,
+            "strokeDashArray": null,
+            "strokeLineCap": "butt",
+            "strokeDashOffset": 0,
+            "strokeLineJoin": "miter",
+            "strokeUniform": true,
+            "strokeMiterLimit": 4,
+            "scaleX": 1,
+            "scaleY": 1,
+            "angle": 0,
+            "flipX": false,
+            "flipY": false,
+            "opacity": 1,
+            "shadow": null,
+            "visible": true,
+            "backgroundColor": "",
+            "fillRule": "nonzero",
+            "paintFirst": "fill",
+            "globalCompositeOperation": "source-over",
+            "skewX": 0,
+            "skewY": 0,
+            "rx": 0,
+            "ry": 0,
+            "Class": "head"
         }
-    ],
-    "imagePath": "basketball.png",
-    "imageData": null,
-    "imageHeight": 440,
-    "imageWidth": 660
+    ]
 }
